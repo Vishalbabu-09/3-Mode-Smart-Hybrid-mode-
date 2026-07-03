@@ -1,18 +1,15 @@
-# 🚗 3-Mode Smart Robot Car using Arduino Uno & ESP32
+
+# 🚗 3-Mode Smart Robot Car using Arduino Uno and ESP32
 
 <p align="center">
-  <img src="images/robot.jpg" width="700">
+  <img src="Images/Robot.jpg" width="700" alt="3-Mode Smart Robot Car">
 </p>
 
-<<<<<<< HEAD
 A multifunctional smart robot car capable of operating in **three independent modes**: **Obstacle Avoidance**, **Line Following**, and **Bluetooth Manual Control**.
 
 The project combines an **Arduino Uno** for real-time motor and sensor control with an **ESP32 DevKit** for Bluetooth communication, creating a modular embedded system capable of both autonomous and manual operation.
 
 > Developed by **Vishal** and **Nitish** as part of the **Value Added Course (VAC) – Arduino Microcontroller**.
-=======
-> Developed as part of the **Value Added Course (VAC) on Arduino MCU** project by me (Vishal) and my teammate (Nitish).
->>>>>>> f1850d0f622c8b63d1ff958bfe08efd43e69552d
 
 ---
 
@@ -26,7 +23,7 @@ The project combines an **Arduino Uno** for real-time motor and sensor control w
 
 # 📖 Project Overview
 
-This project demonstrates the implementation of a **multi-functional smart robot car** capable of switching between three operating modes using dedicated rocker switches.
+This project demonstrates the implementation of a multi-functional smart robot car capable of switching between three operating modes using dedicated rocker switches.
 
 The robot combines autonomous navigation and wireless manual control into a single platform.
 
@@ -36,30 +33,23 @@ The robot combines autonomous navigation and wireless manual control into a sing
 - ➖ Line Following
 - 📱 Bluetooth Manual Control
 
-The **Arduino Uno** performs all real-time control operations including:
+The **Arduino Uno** performs all real-time control operations including motor control, sensor processing, servo control, buzzer control and operating mode selection.
 
-- Motor control
-- Servo control
-- Ultrasonic sensing
-- IR sensor processing
-- Buzzer control
-- Mode selection
-
-The **ESP32 DevKit** functions as a Bluetooth communication bridge by receiving commands from a smartphone and forwarding them to the Arduino Uno through UART serial communication.
+The **ESP32 DevKit** acts as a Bluetooth communication bridge by receiving commands from a smartphone and forwarding them to the Arduino Uno through UART serial communication.
 
 ---
 
 # ✨ Features
 
 - 🚗 Three independent operating modes
-- 📡 Bluetooth-based manual control
+- 📡 Bluetooth manual control
 - 🚧 Autonomous obstacle avoidance
 - ➖ Automatic line following
-- 🔄 Servo-based ultrasonic scanning
+- 🔄 Servo-mounted ultrasonic scanning
 - 🔔 Buzzer alerts
-- 🎛 Physical rocker-switch mode selection
+- 🎛 Four rocker-switch controls
 - ⚡ Battery-powered portable design
-- 🤖 Modular Arduino + ESP32 architecture
+- 🤖 Arduino + ESP32 modular architecture
 
 ---
 
@@ -70,10 +60,10 @@ The **ESP32 DevKit** functions as a Bluetooth communication bridge by receiving 
 | Main Controller | Arduino Uno |
 | Bluetooth Controller | ESP32 DevKit |
 | Programming Language | C++ |
-| Framework | Arduino |
+| Framework | Arduino Framework |
 | Motor Driver | L298N |
+| Communication | Bluetooth (UART) |
 | Power Supply | 7.4V (2×18650 Li-ion Batteries) |
-| Communication | Bluetooth UART |
 | Drive System | 4WD DC Gear Motors |
 | Sensors | HC-SR04 + 3 IR Sensors |
 | Operating Modes | 3 |
@@ -86,37 +76,37 @@ The **ESP32 DevKit** functions as a Bluetooth communication bridge by receiving 
 |-----------|:--------:|---------|
 | Arduino Uno (CH340 Square Chip Version) | 1 | Main controller |
 | ESP32 DevKit | 1 | Bluetooth communication bridge |
-| L298N Motor Driver | 1 | Controls four DC motors |
-| HC-SR04 Ultrasonic Sensor | 1 | Obstacle distance measurement |
-| Ultrasonic Sensor Mount | 1 | Holds ultrasonic sensor |
-| SG90 Servo Motor | 1 | Rotates ultrasonic sensor |
-| IR Sensors | 3 | One center IR for obstacle assistance, two side IR sensors for line following |
+| L298N Motor Driver | 1 | Drives four DC motors |
+| HC-SR04 Ultrasonic Sensor | 1 | Obstacle detection |
+| Ultrasonic Sensor Holder | 1 | Mounts the ultrasonic sensor |
+| SG90 Servo Motor | 1 | Rotates the ultrasonic sensor |
+| IR Sensors | 3 | One center IR for obstacle assistance and two side IR sensors for line following |
 | Active Buzzer | 1 | Audible feedback |
 | Robot Chassis | 1 | Mechanical frame |
-| DC Gear Motors | 4 | Robot locomotion |
-| Robot Wheels | 4 | Robot movement |
-| 18650 Li-ion Battery (3.7V) | 2 | Power source |
-| Dual 18650 Battery Holder | 1 | Provides approximately 7.4V |
+| DC Gear Motors | 4 | Robot movement |
+| Robot Wheels | 4 | Locomotion |
+| 18650 Li-ion Batteries (3.7V) | 2 | Power source |
+| Dual 18650 Battery Holder | 1 | Provides ~7.4V |
 | Rocker Switches | 4 | Power and mode selection |
 | Breadboard | 1 | Power distribution |
 | Jumper Wires | Multiple | Electrical connections |
-| Hook-up Wires | As required | Permanent wiring |
+| Hook-up Wires | As required | Component wiring |
 
 ---
 
 # 🔋 Power Supply
 
-The robot is powered using **two 3.7V 18650 Li-ion batteries connected in series**, providing an operating voltage of approximately **7.4V**.
+The robot is powered using **two 3.7V 18650 Li-ion batteries connected in series**, providing approximately **7.4V**.
 
-The battery output is distributed through the breadboard power rails and supplied directly to the **VIN pin of the Arduino Uno** and the **VIN pin of the ESP32 DevKit**.
+The battery output is distributed through the breadboard power rails and supplied directly to the **VIN** pin of both the **Arduino Uno** and the **ESP32 DevKit**.
 
-The breadboard serves as a centralized power distribution board, providing common power and ground connections to the motor driver, sensors, servo motor, buzzer, and other peripheral components.
+The breadboard serves as a centralized power distribution board for the motor driver, sensors, servo motor, buzzer and other peripherals.
 
 ---
 
 # 🎛 Operating Modes
 
-The robot features four rocker switches mounted on the chassis.
+The robot uses four rocker switches mounted on the chassis.
 
 | Switch Position | Function |
 |-----------------|----------|
@@ -125,43 +115,37 @@ The robot features four rocker switches mounted on the chassis.
 | Middle | Obstacle Avoidance |
 | Right-most | Line Following |
 
-> **Important:** Only **one operating mode** should be enabled at any given time. If two or more mode switches are activated simultaneously, the Arduino intentionally places the robot in a **STOP** state to prevent conflicting control logic and ensure safe operation.
+> **Important:** Only **one operating mode** should be enabled at a time. If two or more operating mode switches are turned ON simultaneously, the Arduino intentionally places the robot in a **STOP** state to prevent conflicting control logic and ensure safe operation.
 
 ---
 
 # ⚙ Working Principle
 
-The robot supports **three independent operating modes**, each selected using dedicated rocker switches.
-
 ## 🚧 Obstacle Avoidance Mode
 
-When the obstacle avoidance mode is enabled, the Arduino continuously monitors both the **HC-SR04 ultrasonic sensor** and the **center IR sensor**.
+The Arduino continuously monitors the ultrasonic sensor and center IR sensor.
 
-Upon detecting an obstacle, the robot:
+When an obstacle is detected, the robot:
 
 1. Stops and activates the buzzer.
 2. Moves backward briefly.
-3. Rotates the ultrasonic sensor using the SG90 servo.
-4. Measures the available distance on both the left and right sides.
-5. Compares both distances.
-6. Turns toward the direction with greater clearance.
+3. Rotates the ultrasonic sensor using the servo motor.
+4. Scans both directions.
+5. Chooses the direction with greater clearance.
+6. Turns accordingly.
 7. Continues moving forward.
 
 ---
 
 ## ➖ Line Following Mode
 
-The left and right IR sensors detect the line beneath the robot.
-
-Based on the sensor readings, the Arduino continuously adjusts the motor directions to keep the robot aligned with the track.
+The left and right IR sensors detect the line beneath the robot. The Arduino adjusts motor movement to keep the robot aligned with the path.
 
 ---
 
 ## 📱 Bluetooth Manual Control Mode
 
-The ESP32 receives commands wirelessly from a Bluetooth-enabled smartphone.
-
-These commands are forwarded to the Arduino Uno through UART serial communication, allowing manual control of the robot's movement and buzzer.
+The ESP32 receives Bluetooth commands from a smartphone and forwards them to the Arduino through UART serial communication for movement and buzzer control.
 
 ---
 
@@ -169,11 +153,11 @@ These commands are forwarded to the Arduino Uno through UART serial communicatio
 
 | Sensor | Function |
 |---------|----------|
-| HC-SR04 Ultrasonic Sensor | Measures obstacle distance |
-| SG90 Servo Motor | Rotates ultrasonic sensor for scanning |
-| Center IR Sensor | Assists obstacle detection |
-| Left IR Sensor | Line detection |
-| Right IR Sensor | Line detection |
+| HC-SR04 | Obstacle distance measurement |
+| SG90 Servo | Ultrasonic scanning |
+| Center IR | Obstacle assistance |
+| Left IR | Line detection |
+| Right IR | Line detection |
 
 ---
 
@@ -181,33 +165,33 @@ These commands are forwarded to the Arduino Uno through UART serial communicatio
 
 | Command | Action |
 |---------|--------|
-| F | Move Forward |
-| B | Move Backward |
+| F | Forward |
+| B | Backward |
 | L | Turn Left |
 | R | Turn Right |
 | S | Stop |
-| H | Activate Buzzer |
+| H | Horn / Buzzer |
 
 ---
 
 # 🏗 System Architecture
 
-```
+```text
           Smartphone
                │
           Bluetooth
                │
-        ESP32 DevKit
+          ESP32 DevKit
                │
-        UART Communication
+         UART Communication
                │
           Arduino Uno
                │
-     ┌─────────┼─────────┐
-     │         │         │
-  L298N     Sensors    Servo
-     │
- 4 DC Gear Motors
+      ┌────────┼────────┐
+      │        │        │
+    L298N   Sensors   Servo
+      │
+  4 DC Gear Motors
 ```
 
 ---
@@ -221,9 +205,9 @@ These commands are forwarded to the Arduino Uno through UART serial communicatio
 | D6 | ENA & ENB (Common PWM) |
 | D7 | L298N IN2 |
 | D8 | L298N IN1 |
-| D11 | SG90 Servo |
+| D11 | Servo Motor |
 | D12 | Obstacle Mode Switch |
-| D13 | Line Following Switch |
+| D13 | Line Following Mode Switch |
 | A0 | Left IR Sensor |
 | A1 | Center IR Sensor |
 | A2 | Right IR Sensor |
@@ -231,7 +215,7 @@ These commands are forwarded to the Arduino Uno through UART serial communicatio
 | A4 | Ultrasonic Echo |
 | A5 | Ultrasonic Trigger |
 
-> **Note:** The ENA and ENB enable pins of the L298N motor driver are electrically connected together and controlled using Arduino digital pin **D6**. This modification was implemented due to a hardware issue with the ENB enable channel, allowing both motor channels to share the same PWM speed control signal.
+> **Note:** The ENA and ENB pins of the L298N motor driver are electrically connected together and driven by Arduino pin **D6** due to a hardware issue with the ENB channel.
 
 ---
 
@@ -246,21 +230,22 @@ These commands are forwarded to the Arduino Uno through UART serial communicatio
 
 # 📁 Repository Structure
 
-```
+```text
 .
-├── Arduino/
-│   └── SmartRobotCar.ino
+├── Arduino_Code/
+│   └── Arduino_CarCode.ino
 │
-├── ESP32/
-│   └── ESP32_Bluetooth.ino
+├── ESP32_Code/
+│   └── ESP32_BluetoothCar_Code.ino
 │
-├── images/
-│   ├── robot.jpg
-│   ├── wiring-diagram.png
-│   └── block-diagram.png
+├── Images/
+│   ├── Robot.jpg
+│   ├── Wiring_Diagram.png
+│   ├── Block_Diagram.png
+│   └── Circuit.jpg
 │
-├── videos/
-│   └── demo.mp4
+├── Video/
+│   └── Demo.mp4
 │
 ├── README.md
 └── LICENSE
@@ -270,9 +255,7 @@ These commands are forwarded to the Arduino Uno through UART serial communicatio
 
 # 📂 Source Code
 
-The project consists of two independent firmware programs.
-
-### Arduino Uno
+## Arduino_CarCode.ino
 
 Responsible for:
 
@@ -281,10 +264,10 @@ Responsible for:
 - Line following
 - Servo control
 - Sensor processing
-- Mode selection
 - Buzzer control
+- Operating mode selection
 
-### ESP32 DevKit
+## ESP32_BluetoothCar_Code.ino
 
 Responsible for:
 
@@ -296,10 +279,10 @@ Responsible for:
 
 # 🔌 Wiring Diagram
 
-> Complete wiring diagram of the robot.
+> Add the wiring diagram below.
 
 <p align="center">
-  <img src="images/wiring-diagram.png" width="850">
+  <img src="Images/Wiring_Diagram.png" width="850" alt="Wiring Diagram">
 </p>
 
 ---
@@ -308,7 +291,7 @@ Responsible for:
 
 - PID-based line following
 - Wi-Fi control using ESP32
-- Mobile application with graphical interface
+- Mobile application
 - Camera module integration
 - Battery voltage monitoring
 - Autonomous path planning
