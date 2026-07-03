@@ -284,7 +284,7 @@ Responsible for:
 > Add the wiring diagram below.
 
 <p align="center">
-  <img src="Images/Wiring_Diagram.png" width="850" alt="Wiring Diagram">
+  <img src="Images/Wiring diagram.jpg" width="850" alt="Wiring Diagram">
 </p>
 
 ---
