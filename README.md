@@ -279,9 +279,7 @@ After successfully uploading the firmware, reconnect the TX and RX wires before 
 │   ├── Top view(Turned on).jpg
 │   ├── Top view(Turned off).jpg
 │   ├── Wiring_Diagram.png
-│   ├── Block_Diagram.png
-│   └── Circuit.jpg
-│
+│ 
 ├── Video/
 │   └── 3 Mode Smart car.mp4
 │
@@ -396,6 +394,10 @@ Temporarily disconnecting the UART connections resolves this issue.
 Developed as part of the **Value Added Course (VAC) – Arduino Microcontroller**.
 
 ---
+
+## ⭐ If you found this project helpful
+
+If this project helped you or inspired your own work, consider giving the repository a ⭐ on GitHub. It helps others discover the project and supports future development.
 
 # 📄 License
 
